@@ -1,0 +1,33 @@
+{
+  "name": "ai-viva-examiner",
+  "version": "1.0.0",
+  "description": "AI Viva Examiner - Intelligent, real-time viva assessment and knowledge-gap detection platform",
+  "main": "backend/server.js",
+  "scripts": {
+    "start": "node backend/server.js",
+    "dev": "nodemon backend/server.js"
+  },
+  "keywords": [
+    "ai",
+    "viva",
+    "examination",
+    "education",
+    "openrouter"
+  ],
+  "author": "AI Viva Examiner Team",
+  "license": "ISC",
+  "type": "commonjs",
+  "dependencies": {
+    "adm-zip": "^0.6.1",
+    "cors": "^2.8.6",
+    "dotenv": "^18.0.3",
+    "express": "^5.2.1",
+    "mammoth": "^1.12.3",
+    "multer": "^2.4.0",
+    "pdf-parse": "^2.4.5",
+    "sqlite3": "^6.0.1"
+  },
+  "devDependencies": {
+    "nodemon": "^3.1.14"
+  }
+}
