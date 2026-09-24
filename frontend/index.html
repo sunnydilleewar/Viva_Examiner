@@ -3,553 +3,671 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>AI Viva Examiner — Intelligent Oral Examination Platform</title>
+  <title>VivaAI — Intelligent Oral Examination Platform</title>
   <link rel="stylesheet" href="css/style.css">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
 </head>
 <body>
-  <!-- Header / Navigation -->
-  <header class="site-header">
-    <div class="container header-container">
-      <div class="logo">
-        <div class="logo-icon">
-          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-            <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-          </svg>
-        </div>
-        <div class="logo-text">
-          <span class="logo-title">AI Viva Examiner</span>
-          <span class="logo-badge">v1.0</span>
-        </div>
-      </div>
 
-      <nav class="nav-links">
-        <a href="#overview">Overview</a>
-        <a href="#how-it-works">How It Works</a>
-        <a href="#project-upload">Project Upload</a>
-        <a href="#project-analysis">Manual Test</a>
-        <a href="#system-status">System Status</a>
+  <!-- ===== LANDING PAGE ===== -->
+  <div class="page-landing" id="pageLanding">
+    <header class="landing-header">
+      <div class="landing-logo">
+        <div class="brand-icon">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="brand-name">VivaAI</span>
+      </div>
+      <nav class="landing-nav">
+        <a href="#" class="nav-item">Features</a>
+        <a href="#" class="nav-item">How It Works</a>
+        <a href="#" class="nav-item">About</a>
       </nav>
+      <button class="btn-login" id="btnLogin">Login</button>
+    </header>
 
-      <div class="header-actions">
-        <div class="status-indicator-pill" id="navStatusPill" title="Backend API Health">
-          <span class="status-dot"></span>
-          <span class="status-label" id="navStatusLabel">Checking API...</span>
+    <main class="landing-main">
+      <div class="landing-content">
+        <div class="landing-text">
+          <h1 class="landing-title">Your AI<br><span class="title-viva">Viva</span> <span class="title-examiner">Examiner</span></h1>
+          <p class="landing-subtitle">Turn your project into viva-ready confidence.</p>
+          <p class="landing-desc">Upload your project, get AI-powered questions, practice your answers, and receive a detailed performance report — all in one place.</p>
+          <button class="btn-get-started" id="btnGetStarted">
+            Get Started
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/></svg>
+          </button>
+          <div class="landing-features">
+            <span class="feat-pill"><span class="feat-dot"></span>Analyze</span>
+            <span class="feat-pill"><span class="feat-dot"></span>Practice</span>
+            <span class="feat-pill"><span class="feat-dot"></span>Improve</span>
+          </div>
         </div>
-        <button class="btn btn-primary btn-sm" id="btnStartVivaHeader">Start Viva</button>
+        <div class="landing-visual">
+          <div class="robot-illustration">
+            <div class="robot-glow"></div>
+            <svg class="robot-svg" viewBox="0 0 200 220" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <!-- Robot body -->
+              <rect x="55" y="100" width="90" height="80" rx="16" fill="#6c63ff" opacity="0.15" stroke="#6c63ff" stroke-width="1.5"/>
+              <!-- Robot head -->
+              <rect x="60" y="50" width="80" height="60" rx="14" fill="#7c3aed" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+              <!-- Eyes -->
+              <circle cx="82" cy="76" r="10" fill="#1e1b2e" stroke="#6c63ff" stroke-width="1.5"/>
+              <circle cx="118" cy="76" r="10" fill="#1e1b2e" stroke="#6c63ff" stroke-width="1.5"/>
+              <circle cx="85" cy="73" r="4" fill="#6c63ff"/>
+              <circle cx="121" cy="73" r="4" fill="#6c63ff"/>
+              <!-- Mouth -->
+              <rect x="82" y="95" width="36" height="6" rx="3" fill="#6c63ff" opacity="0.6"/>
+              <!-- Antenna -->
+              <line x1="100" y1="50" x2="100" y2="36" stroke="#8b5cf6" stroke-width="2" stroke-linecap="round"/>
+              <circle cx="100" cy="32" r="5" fill="#a78bfa"/>
+              <!-- Arms -->
+              <rect x="25" y="108" width="30" height="14" rx="7" fill="#6c63ff" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+              <rect x="145" y="108" width="30" height="14" rx="7" fill="#6c63ff" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+              <!-- Screen on body -->
+              <rect x="68" y="112" width="64" height="40" rx="8" fill="#1e1b2e" stroke="#6c63ff" stroke-width="1"/>
+              <!-- Screen lines -->
+              <line x1="74" y1="124" x2="126" y2="124" stroke="#6c63ff" stroke-width="1" opacity="0.5"/>
+              <line x1="74" y1="132" x2="116" y2="132" stroke="#6c63ff" stroke-width="1" opacity="0.3"/>
+              <line x1="74" y1="140" x2="110" y2="140" stroke="#6c63ff" stroke-width="1" opacity="0.2"/>
+              <!-- Legs -->
+              <rect x="72" y="180" width="20" height="28" rx="6" fill="#6c63ff" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+              <rect x="108" y="180" width="20" height="28" rx="6" fill="#6c63ff" opacity="0.2" stroke="#8b5cf6" stroke-width="1.5"/>
+              <!-- Chat bubbles -->
+              <rect x="130" y="48" width="58" height="26" rx="8" fill="#1e1b2e" stroke="#6c63ff" stroke-width="1"/>
+              <text x="158" y="65" fill="#8b5cf6" font-size="9" text-anchor="middle" font-family="Inter, sans-serif">Let's ace</text>
+              <text x="158" y="75" fill="#a78bfa" font-size="9" text-anchor="middle" font-family="Inter, sans-serif">your viva!</text>
+              <polygon points="138,72 130,78 138,78" fill="#6c63ff" opacity="0.6"/>
+            </svg>
+            <div class="orbit-ring"></div>
+          </div>
+        </div>
       </div>
-    </div>
-  </header>
+    </main>
+  </div>
 
-  <!-- Main Content -->
-  <main>
-    <!-- Hero Section -->
-    <section class="hero-section" id="overview">
-      <div class="container hero-container">
-        <div class="hero-content">
-          <div class="badge-wrapper">
-            <span class="badge badge-accent">Academic Assessment Platform</span>
-            <span class="badge badge-neutral">Phase 1 Foundation</span>
+  <!-- ===== APP SHELL (Dashboard, etc.) ===== -->
+  <div class="app-shell" id="appShell" style="display:none;">
+
+    <!-- Sidebar -->
+    <aside class="sidebar">
+      <div class="sidebar-brand">
+        <div class="brand-icon">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+        </div>
+        <span class="brand-name">VivaAI</span>
+      </div>
+
+      <nav class="sidebar-nav">
+        <button class="nav-link active" data-page="dashboard">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/></svg>
+          <span>Dashboard</span>
+        </button>
+        <button class="nav-link" data-page="projects">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 19a2 2 0 0 1-2 2H4a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h5l2 3h9a2 2 0 0 1 2 2z"/></svg>
+          <span>My Projects</span>
+        </button>
+        <button class="nav-link" data-page="viva">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <span>Viva Sessions</span>
+        </button>
+        <button class="nav-link" data-page="reports">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+          <span>Reports</span>
+        </button>
+        <button class="nav-link" data-page="settings">
+          <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          <span>Settings</span>
+        </button>
+      </nav>
+    </aside>
+
+    <!-- Main Content Area -->
+    <div class="app-content">
+
+      <!-- Top Bar -->
+      <header class="app-topbar">
+        <div class="topbar-left">
+          <button class="sidebar-toggle" id="sidebarToggle" type="button" aria-label="Toggle sidebar">
+            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+          </button>
+          <div class="topbar-title" id="topbarTitle">Dashboard</div>
+        </div>
+        <div class="topbar-right">
+          <div class="status-indicator-pill" id="navStatusPill">
+            <span class="status-dot" id="navStatusDot"></span>
+            <span id="navStatusLabel">Checking API...</span>
           </div>
-          <h1 class="hero-title">Rigorous, Objective AI-Powered Viva Voce Assessment</h1>
-          <p class="hero-description">
-            Simulate authentic academic oral examinations, evaluate conceptual depth in real-time, and pinpoint knowledge gaps with diagnostic precision.
-          </p>
+          <div class="user-avatar" id="btnUserMenu">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <span>Sunny Dilleewar</span>
+            <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="6 9 12 15 18 9"/></svg>
+          </div>
+        </div>
+      </header>
 
-          <div class="hero-actions">
-            <button class="btn btn-primary btn-lg" id="btnStartVivaMain">
-              <span>Start Viva</span>
-              <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-                <line x1="5" y1="12" x2="19" y2="12"></line>
-                <polyline points="12 5 19 12 12 19"></polyline>
-              </svg>
-            </button>
-            <a href="#how-it-works" class="btn btn-secondary btn-lg">
-              Explore Examination Flow
-            </a>
+      <!-- ── PAGE: DASHBOARD ── -->
+      <section class="app-page active" id="page-dashboard">
+        <div class="page-inner">
+          <div class="dashboard-greeting">
+            <h2>Good morning, Sunny! ☀️</h2>
+            <p>Ready to turn your project into viva-ready confidence?</p>
           </div>
 
-          <div class="hero-highlights">
-            <div class="highlight-item">
-              <span class="highlight-bullet"></span>
-              <span>Adaptive Socratic Questioning</span>
+          <div class="dashboard-quick-actions">
+            <div class="quick-action-card" id="qaUpload">
+              <div class="qa-icon" style="background:rgba(108,99,255,0.15);color:#8b5cf6;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+              </div>
+              <h4>Upload Project</h4>
+              <p>Add your project files, code, or GitHub repository to get started.</p>
             </div>
-            <div class="highlight-item">
-              <span class="highlight-bullet"></span>
-              <span>Objective Multi-Criteria Scoring</span>
+            <div class="quick-action-card" id="qaStartViva">
+              <div class="qa-icon" style="background:rgba(16,185,129,0.15);color:#10b981;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+              </div>
+              <h4>Start Viva</h4>
+              <p>Practice with AI-generated questions.</p>
             </div>
-            <div class="highlight-item">
-              <span class="highlight-bullet"></span>
-              <span>Instant Gap Diagnosis</span>
+            <div class="quick-action-card" id="qaReports">
+              <div class="qa-icon" style="background:rgba(59,130,246,0.15);color:#3b82f6;">
+                <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+              </div>
+              <h4>View Reports</h4>
+              <p>See your performance and improvement areas.</p>
+            </div>
+          </div>
+
+          <div class="dashboard-section-label">
+            Recent Projects
+            <a href="#" class="view-all-link" data-page="projects">View all →</a>
+          </div>
+          <div class="recent-projects-list" id="recentProjectsList">
+            <div class="project-list-item">
+              <div class="project-list-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div class="project-list-info">
+                <span class="project-list-name">CivicPulse - Smart City Platform</span>
+                <span class="project-list-date">Updated on 10 Dec, 2026</span>
+              </div>
+              <span class="badge-status status-analyzed">Analyzed</span>
+            </div>
+            <div class="project-list-item">
+              <div class="project-list-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div class="project-list-info">
+                <span class="project-list-name">AI Image Generator</span>
+                <span class="project-list-date">Updated on 8 Dec, 2026</span>
+              </div>
+              <span class="badge-status status-completed">Completed</span>
+            </div>
+            <div class="project-list-item">
+              <div class="project-list-icon">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+              </div>
+              <div class="project-list-info">
+                <span class="project-list-name">Student Management System</span>
+                <span class="project-list-date">Updated on 5 Dec, 2026</span>
+              </div>
+              <span class="badge-status status-inprogress">In Progress</span>
             </div>
           </div>
         </div>
+      </section>
 
-        <div class="hero-preview">
-          <div class="preview-window">
-            <div class="window-header">
-              <div class="window-dots">
-                <span class="dot dot-red"></span>
-                <span class="dot dot-yellow"></span>
-                <span class="dot dot-green"></span>
-              </div>
-              <div class="window-title">Viva Session #014 — System Verification</div>
-              <div class="window-status">
-                <span class="pulse-indicator"></span>
-                <span>Ready</span>
-              </div>
+      <!-- ── PAGE: MY PROJECTS / UPLOAD ── -->
+      <section class="app-page" id="page-projects">
+        <div class="page-inner">
+          <div class="page-header-row">
+            <div>
+              <h2 class="page-title">Upload Your Project</h2>
+              <p class="page-subtitle">Add your project files, code, or GitHub repository to get started.</p>
             </div>
+          </div>
 
-            <div class="window-body">
-              <div class="session-meta">
-                <div class="meta-row">
-                  <span class="meta-label">Subject:</span>
-                  <span class="meta-value">Distributed Systems & Operating Systems</span>
+          <div class="upload-workbench-grid">
+            <!-- Upload Form -->
+            <div class="upload-panel-card">
+              <div class="upload-drop-area" id="mainDropZone">
+                <div class="drop-area-icon">
+                  <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
                 </div>
-                <div class="meta-row">
-                  <span class="meta-label">Evaluation Mode:</span>
-                  <span class="meta-value">Concept Depth & Critical Reasoning</span>
-                </div>
-                <div class="meta-row">
-                  <span class="meta-label">Platform Core:</span>
-                  <span class="meta-value">Node.js Express + SQLite3</span>
-                </div>
+                <p class="drop-area-title">Drag &amp; drop your files here</p>
+                <p class="drop-area-sub">or</p>
+                <label class="btn-choose-files">
+                  Choose Files
+                  <input type="file" id="docFileInput" multiple accept=".pdf,.docx,.pptx,.txt,.md,.zip" style="display:none;">
+                </label>
+                <p class="drop-area-types">Supports: PDF, DOCX, PPTX, TXT, ZIP, GitHub URL &nbsp;·&nbsp; Max size: 50MB</p>
               </div>
 
-              <div class="mock-dialog">
-                <div class="dialog-turn examiner">
-                  <div class="dialog-avatar">AI</div>
-                  <div class="dialog-bubble">
-                    <p class="dialog-speaker">Examiner</p>
-                    <p class="dialog-text">
-                      "Welcome to your oral examination. Let us begin with process synchronization: Explain the Byzantine Generals Problem and compare how Raft and Paxos ensure consensus under network partitions."
-                    </p>
+              <div class="upload-type-icons">
+                <div class="upload-type-item">
+                  <div class="type-icon" style="color:#ef4444;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                   </div>
+                  <span>Project Documentation</span>
+                  <span class="type-ext">PDF, DOCX, PPTX</span>
                 </div>
-
-                <div class="dialog-turn candidate">
-                  <div class="dialog-avatar">ST</div>
-                  <div class="dialog-bubble">
-                    <p class="dialog-speaker">Candidate Response</p>
-                    <p class="dialog-text">
-                      "In distributed systems, the Byzantine Generals Problem deals with consensus where nodes may fail or act maliciously. Raft simplifies Paxos by decomposing consensus into leader election, log replication, and safety guarantees..."
-                    </p>
+                <div class="upload-type-item">
+                  <div class="type-icon" style="color:#f59e0b;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="16 18 22 12 16 6"/><polyline points="8 6 2 12 8 18"/></svg>
                   </div>
+                  <span>Source Code</span>
+                  <span class="type-ext">ZIP, tar.gz</span>
                 </div>
-              </div>
-
-              <div class="mock-score-preview">
-                <div class="score-metric">
-                  <span class="score-name">Technical Accuracy</span>
-                  <div class="score-bar"><div class="score-fill" style="width: 88%;"></div></div>
-                  <span class="score-val">88%</span>
-                </div>
-                <div class="score-metric">
-                  <span class="score-name">Conceptual Depth</span>
-                  <div class="score-bar"><div class="score-fill" style="width: 92%;"></div></div>
-                  <span class="score-val">92%</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Key Metrics / Pillars -->
-    <section class="pillars-section">
-      <div class="container">
-        <div class="pillars-grid">
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <circle cx="12" cy="12" r="10"></circle>
-                <path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"></path>
-                <line x1="12" y1="17" x2="12.01" y2="17"></line>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Dynamic Inquiry</h3>
-            <p class="pillar-text">Progresses logically from fundamental definitions to architectural edge cases and trade-offs.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                <polyline points="14 2 14 8 20 8"></polyline>
-                <line x1="16" y1="13" x2="8" y2="13"></line>
-                <line x1="16" y1="17" x2="8" y2="17"></line>
-                <polyline points="10 9 9 9 8 9"></polyline>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Rubric Calibration</h3>
-            <p class="pillar-text">Evaluates response precision, foundational correctness, terminology, and reasoning coherence.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polygon points="12 2 2 7 12 12 22 7 12 2"></polygon>
-                <polyline points="2 17 12 22 22 17"></polyline>
-                <polyline points="2 12 12 17 22 12"></polyline>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Gap Detection</h3>
-            <p class="pillar-text">Identifies misconceptions and missing links rather than simply marking answers right or wrong.</p>
-          </div>
-
-          <div class="pillar-card">
-            <div class="pillar-icon">
-              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <path d="M22 11.08V12a10 10 0 1 1-5.93-9.14"></path>
-                <polyline points="22 4 12 14.01 9 11.01"></polyline>
-              </svg>
-            </div>
-            <h3 class="pillar-title">Audit Transcripts</h3>
-            <p class="pillar-text">Generates structured evaluation logs and actionable feedback for candidates and faculty.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- How It Works Section -->
-    <section class="section how-it-works-section" id="how-it-works">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">System Workflow</span>
-          <h2 class="section-title">How AI Viva Examiner Works</h2>
-          <p class="section-subtitle">
-            An end-to-end academic assessment architecture designed to ensure fair, rigorous, and repeatable examinations.
-          </p>
-        </div>
-
-        <div class="steps-grid">
-          <div class="step-card">
-            <div class="step-number">01</div>
-            <h4 class="step-title">Curriculum & Scope Definition</h4>
-            <p class="step-desc">
-              Define the candidate's subject, academic tier, syllabus scope, and examination strictness parameters.
-            </p>
-            <ul class="step-points">
-              <li>Configurable difficulty levels</li>
-              <li>Targeted topic domains</li>
-              <li>Expected competency matrix</li>
-            </ul>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">02</div>
-            <h4 class="step-title">Interactive Oral Assessment</h4>
-            <p class="step-desc">
-              The AI examiner delivers structured questions, listens to candidate reasoning, and presents dynamic follow-ups.
-            </p>
-            <ul class="step-points">
-              <li>Follow-up probing questions</li>
-              <li>Misconception verification</li>
-              <li>Real-time response capture</li>
-            </ul>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">03</div>
-            <h4 class="step-title">Multi-Dimensional Evaluation</h4>
-            <p class="step-desc">
-              Every response is scored against academic rubrics including conceptual depth, accuracy, and communication clarity.
-            </p>
-            <ul class="step-points">
-              <li>Clarity & vocabulary rating</li>
-              <li>Depth vs. superficiality test</li>
-              <li>Evidence-based scoring</li>
-            </ul>
-          </div>
-
-          <div class="step-card">
-            <div class="step-number">04</div>
-            <h4 class="step-title">Diagnostic Gap Analysis</h4>
-            <p class="step-desc">
-              A detailed diagnostic audit pinpointing exact topics requiring reinforcement with recommended study resources.
-            </p>
-            <ul class="step-points">
-              <li>Conceptual blindspot map</li>
-              <li>Audit-ready session report</li>
-              <li>Structured review action items</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Capabilities / Architecture Section -->
-    <section class="section capabilities-section" id="capabilities">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Platform Rigor</span>
-          <h2 class="section-title">Engineered for Academic Standard Excellence</h2>
-          <p class="section-subtitle">
-            Built to avoid shallow Q&A, enforcing true comprehension through systematic inquiry.
-          </p>
-        </div>
-
-        <div class="capabilities-grid">
-          <div class="capability-card">
-            <div class="cap-header">
-              <span class="cap-label">Evaluation Engine</span>
-              <h3>Socratic Follow-ups</h3>
-            </div>
-            <p>
-              When a candidate gives a surface-level response, the examiner probes deeper: <em>"Why does this trade-off exist? What occurs when the condition fails?"</em>
-            </p>
-          </div>
-
-          <div class="capability-card">
-            <div class="cap-header">
-              <span class="cap-label">Evaluation Engine</span>
-              <h3>Hallucination-Resistant</h3>
-            </div>
-            <p>
-              Grounded in structured academic knowledge frameworks. Evaluates logic and domain consistency without accepting plausible-sounding jargon.
-            </p>
-          </div>
-
-          <div class="capability-card">
-            <div class="cap-header">
-              <span class="cap-label">Persistence & Safety</span>
-              <h3>Local SQLite Storage</h3>
-            </div>
-            <p>
-              Complete session persistence, audit logs, and rubric matrices stored in lightweight, high-performance SQLite database.
-            </p>
-          </div>
-
-          <div class="capability-card">
-            <div class="cap-header">
-              <span class="cap-label">Model Orchestration</span>
-              <h3>OpenRouter Integration</h3>
-            </div>
-            <p>
-              Engineered for OpenRouter LLM routing, enabling access to state-of-the-art models for domain-tailored reasoning and evaluation.
-            </p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Phase 3: Project Upload & Real Project Analysis -->
-    <section class="section upload-section" id="project-upload">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Phase 3 Project Analysis</span>
-          <h2 class="section-title">Upload Project Documentation & Source Code</h2>
-          <p class="section-subtitle">
-            Upload candidate project documentation (PDF, DOCX, PPTX, TXT) and repository source code (ZIP) for automatic decomposition, module discovery, and viva topic generation.
-          </p>
-        </div>
-
-        <div class="upload-workbench-grid">
-          <!-- Left Column: Upload Form -->
-          <div class="upload-panel-card">
-            <div class="upload-panel-header">
-              <div>
-                <h3 class="panel-title">Project Submission</h3>
-                <p class="panel-desc">Provide your documentation and code archive</p>
-              </div>
-              <span class="badge badge-accent">Multi-File Ready</span>
-            </div>
-
-            <form id="projectUploadForm">
-              <div class="form-group">
-                <label for="uploadProjectName">Project Name (Optional)</label>
-                <input type="text" id="uploadProjectName" class="form-control" placeholder="Leave blank to infer from repository / documents">
-              </div>
-
-              <div class="form-group">
-                <label for="uploadProjectDesc">Project Overview / Scope Notes (Optional)</label>
-                <textarea id="uploadProjectDesc" class="form-control" rows="2" placeholder="Brief context, candidate roll number, or specific focus areas..."></textarea>
-              </div>
-
-              <div class="form-group">
-                <label for="uploadProjectTech">Key Technologies (Optional)</label>
-                <input type="text" id="uploadProjectTech" class="form-control" placeholder="e.g. Node.js, Express, SQLite, React (inferred if blank)">
-              </div>
-
-              <!-- Upload Drop Zones -->
-              <div class="upload-zones">
-                <!-- Zone 1: Documentation -->
-                <div class="upload-zone" id="docDropZone">
-                  <div class="zone-label">
-                    <span class="zone-icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                        <polyline points="14 2 14 8 20 8"></polyline>
-                        <line x1="16" y1="13" x2="8" y2="13"></line>
-                        <line x1="16" y1="17" x2="8" y2="17"></line>
-                      </svg>
-                    </span>
-                    <strong>Documentation Files</strong>
+                <div class="upload-type-item">
+                  <div class="type-icon" style="color:#8b5cf6;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg>
                   </div>
-                  <p class="zone-sub">PDF, DOCX, PPTX, or TXT documentation (Max 25MB each)</p>
-                  <label class="btn btn-secondary btn-sm upload-btn">
-                    <span>Choose Documents</span>
-                    <input type="file" id="docFileInput" multiple accept=".pdf,.docx,.pptx,.txt,.md" style="display: none;">
-                  </label>
+                  <span>Github Repository</span>
+                  <span class="type-ext">Paste URL</span>
                 </div>
-
-                <!-- Zone 2: Source Code -->
-                <div class="upload-zone" id="codeDropZone">
-                  <div class="zone-label">
-                    <span class="zone-icon">
-                      <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                        <polyline points="16 18 22 12 16 6"></polyline>
-                        <polyline points="8 6 2 12 8 18"></polyline>
-                      </svg>
-                    </span>
-                    <strong>Source Code Archive</strong>
+                <div class="upload-type-item">
+                  <div class="type-icon" style="color:#3b82f6;">
+                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
                   </div>
-                  <p class="zone-sub">ZIP archive containing repository source code</p>
-                  <label class="btn btn-secondary btn-sm upload-btn">
-                    <span>Choose Source ZIP</span>
-                    <input type="file" id="codeFileInput" accept=".zip" style="display: none;">
-                  </label>
+                  <span>Upload Presentation</span>
+                  <span class="type-ext">PPTX</span>
                 </div>
               </div>
 
-              <!-- Selected Files Queue -->
-              <div class="selected-files-section">
+              <div class="selected-files-section" id="selectedFilesSection" style="display:none;">
                 <div class="selected-files-header">
-                  <span>Selected Files Queue (<span id="selectedFilesCount">0</span>)</span>
-                  <button type="button" class="btn-text" id="btnClearFiles" style="display: none;">Clear all</button>
+                  <span>Selected Files (<span id="selectedFilesCount">0</span>)</span>
+                  <button type="button" class="btn-text" id="btnClearFiles">Clear all</button>
                 </div>
-                <div class="selected-files-list" id="selectedFilesList">
-                  <div class="no-files-notice">No files selected yet. Choose documentation or a source code ZIP above.</div>
+                <div class="selected-files-list" id="selectedFilesList"></div>
+              </div>
+
+              <div class="upload-form-fields">
+                <div class="form-group">
+                  <label for="uploadProjectName">Project Name (Optional)</label>
+                  <input type="text" id="uploadProjectName" class="form-control" placeholder="Leave blank to infer from repository / documents">
+                </div>
+                <div class="form-group">
+                  <label for="uploadProjectDesc">Project Overview (Optional)</label>
+                  <textarea id="uploadProjectDesc" class="form-control" rows="2" placeholder="Brief context or specific focus areas..."></textarea>
+                </div>
+                <div class="form-group">
+                  <label for="uploadProjectTech">Key Technologies (Optional)</label>
+                  <input type="text" id="uploadProjectTech" class="form-control" placeholder="e.g. Node.js, Express, SQLite, React">
                 </div>
               </div>
 
-              <!-- Upload Progress Indicator -->
               <div class="progress-stepper" id="uploadStepper" style="display: none;">
-                <div class="step-indicator" id="stepUpload">
-                  <span class="step-dot"></span>
-                  <span class="step-label">1. Uploading</span>
-                </div>
+                <div class="step-indicator" id="stepUpload"><span class="step-dot"></span><span class="step-label">1. Uploading</span></div>
                 <div class="step-connector"></div>
-                <div class="step-indicator" id="stepExtract">
-                  <span class="step-dot"></span>
-                  <span class="step-label">2. Extracting Files</span>
-                </div>
+                <div class="step-indicator" id="stepExtract"><span class="step-dot"></span><span class="step-label">2. Extracting Files</span></div>
                 <div class="step-connector"></div>
-                <div class="step-indicator" id="stepAnalyze">
-                  <span class="step-dot"></span>
-                  <span class="step-label">3. AI Analyzing</span>
-                </div>
+                <div class="step-indicator" id="stepAnalyze"><span class="step-dot"></span><span class="step-label">3. AI Analyzing</span></div>
                 <div class="step-connector"></div>
-                <div class="step-indicator" id="stepComplete">
-                  <span class="step-dot"></span>
-                  <span class="step-label">4. Complete</span>
-                </div>
+                <div class="step-indicator" id="stepComplete"><span class="step-dot"></span><span class="step-label">4. Complete</span></div>
               </div>
 
-              <!-- Form Actions -->
-              <div class="upload-actions">
-                <button type="submit" class="btn btn-primary btn-lg" id="btnSubmitUpload" disabled>
+              <form id="projectUploadForm">
+                <button type="submit" class="btn-primary-full" id="btnSubmitUpload" disabled>
                   <span id="uploadBtnText">Analyze Project</span>
-                  <span class="spinner" id="uploadSpinner" style="display: none;"></span>
+                  <span class="spinner" id="uploadSpinner" style="display:none;"></span>
                 </button>
+              </form>
+            </div>
+
+            <!-- Results Panel -->
+            <div class="upload-results-card">
+              <div class="results-card-header">
+                <div>
+                  <h3 class="panel-title">Project Decomposition &amp; Viva Readiness</h3>
+                  <span class="panel-subtitle" id="uploadResultMeta">Awaiting project submission</span>
+                </div>
+                <span class="badge-status status-analyzed" id="uploadStatusBadge" style="display:none;">Analyzing</span>
               </div>
-            </form>
+              <div class="results-card-body" id="uploadResultsBody">
+                <div class="empty-state">
+                  <svg width="48" height="48" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="17 8 12 3 7 8"/><line x1="12" y1="3" x2="12" y2="15"/></svg>
+                  <p>Upload your project documents and source code to extract architecture, detected tech, and viva topics.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PAGE: VIVA SESSION ── -->
+      <section class="app-page" id="page-viva">
+        <div class="page-inner">
+          <div class="page-header-row">
+            <div>
+              <a href="#" class="back-link" data-page="projects">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="19" y1="12" x2="5" y2="12"/><polyline points="12 19 5 12 12 5"/></svg>
+                Back to Projects
+              </a>
+              <div class="project-viva-header">
+                <div>
+                  <h2>CivicPulse – Smart City Platform</h2>
+                  <p class="file-size-note">Node.js · Express · SQLite · 1.2 MB</p>
+                </div>
+                <button class="btn-analyze">Analyze Complete</button>
+              </div>
+              <div class="viva-tabs">
+                <button class="viva-tab active">Overview</button>
+                <button class="viva-tab">Technologies</button>
+                <button class="viva-tab">Features</button>
+                <button class="viva-tab">Architecture</button>
+                <button class="viva-tab">Implementation</button>
+              </div>
+            </div>
           </div>
 
-          <!-- Right Column: Results Display -->
-          <div class="upload-results-card">
-            <div class="results-card-header">
-              <div>
-                <h3 class="panel-title">Project Decomposition & Viva Readiness</h3>
-                <span class="panel-subtitle" id="uploadResultMeta">Awaiting project submission</span>
+          <div class="viva-analysis-grid">
+            <!-- Left: Project Summary -->
+            <div class="viva-summary-card">
+              <div class="viva-card-title">Project Summary</div>
+              <p class="viva-summary-text">CivicPulse is a MERN stack based smart city platform that enables citizens to report, track and manage civic issues like potholes, streetlights, garbage, traffic problems etc more. It uses AI for classification, duplicate detection and intelligent routing to the city department.</p>
+              <div class="key-tech-section">
+                <div class="viva-card-title" style="margin-top:1.25rem;">Key Technologies</div>
+                <div class="tech-chips">
+                  <span class="tech-chip">React</span>
+                  <span class="tech-chip">Node.js</span>
+                  <span class="tech-chip">Express</span>
+                  <span class="tech-chip">MongoDB</span>
+                  <span class="tech-chip">Tailwind CSS</span>
+                  <span class="tech-chip">Leaflet</span>
+                  <span class="tech-chip">JWT</span>
+                  <span class="tech-chip">Axios</span>
+                </div>
               </div>
-              <span class="badge badge-neutral" id="uploadStatusBadge">Awaiting Upload</span>
+              <button class="btn-generate-viva" id="btnGenerateViva">Generate Viva Questions →</button>
             </div>
-            <div class="results-card-body" id="uploadResultsBody">
-              <div class="empty-state">
-                <svg width="44" height="44" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                  <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"></path>
-                  <polyline points="17 8 12 3 7 8"></polyline>
-                  <line x1="12" y1="3" x2="12" y2="15"></line>
+
+            <!-- Right: Detected Features -->
+            <div class="viva-features-card">
+              <div class="viva-card-title">Detected Features</div>
+              <ul class="features-list">
+                <li><span class="feat-check">✓</span> Issue reporting &amp; tracking</li>
+                <li><span class="feat-check">✓</span> AI based categorisation</li>
+                <li><span class="feat-check">✓</span> Duplicate detection</li>
+                <li><span class="feat-check">✓</span> Map visualisation</li>
+                <li><span class="feat-check">✓</span> Role-based access (Admin, Citizen)</li>
+                <li><span class="feat-check">✓</span> Analytics dashboard</li>
+              </ul>
+            </div>
+          </div>
+
+          <!-- Viva Q&A Interface -->
+          <div class="viva-session-wrapper" id="vivaSessionWrapper" style="display:none;">
+            <div class="viva-session-bar">
+              <div class="session-bar-title">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                Viva Session — CivicPulse Smart City Platform
+              </div>
+              <button class="btn-end-session" id="btnEndSession">End Session</button>
+            </div>
+
+            <div class="viva-qa-layout">
+              <!-- Chat Area -->
+              <div class="viva-chat-area">
+                <div class="viva-chat-window" id="vivaChatWindow">
+                  <div class="chat-msg examiner-msg">
+                    <div class="chat-avatar ai-avatar">AI</div>
+                    <div class="chat-bubble">
+                      <p>Great! Let's start with a technical question.</p>
+                      <p class="mt-1"><strong>Q1. What is the role of JWT in your project and how does it work in your application?</strong></p>
+                    </div>
+                  </div>
+                </div>
+
+                <div class="viva-input-row">
+                  <div class="viva-input-wrapper">
+                    <textarea class="viva-answer-input" id="vivaAnswerInput" rows="2" placeholder="Type your answer here..."></textarea>
+                    <button class="btn-submit-answer" id="btnSubmitAnswer">
+                      <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
+                    </button>
+                  </div>
+                  <div class="viva-timer" id="vivaTimer">02:45</div>
+                </div>
+              </div>
+
+              <!-- Session Progress Sidebar -->
+              <div class="session-progress-panel">
+                <div class="session-progress-title">Session Progress</div>
+                <ol class="question-progress-list" id="questionProgressList">
+                  <li class="qp-item active">Q1. JWT &amp; Auth</li>
+                  <li class="qp-item">Q2. Database Design</li>
+                  <li class="qp-item">Q3. AI Classification</li>
+                  <li class="qp-item">Q4. Database Design</li>
+                  <li class="qp-item">Q5. API Endpoints</li>
+                  <li class="qp-item">Q6. System Architecture</li>
+                  <li class="qp-item">Q7. Security &amp; Privacy</li>
+                  <li class="qp-item">Q8. Scalability</li>
+                  <li class="qp-item">Q9. Future Scope</li>
+                  <li class="qp-item">Q10. Final Question</li>
+                </ol>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ── PAGE: REPORTS ── -->
+      <section class="app-page" id="page-reports">
+        <div class="page-inner">
+          <div class="page-header-row">
+            <div>
+              <h2 class="page-title">Reports</h2>
+              <p class="page-subtitle">Your past Viva Sessions &amp; Performance</p>
+            </div>
+          </div>
+
+          <div class="past-sessions-list">
+            <div class="session-list-item">
+              <div class="session-list-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/></svg>
+              </div>
+              <div class="session-list-info">
+                <span class="session-name">CivicPulse – Smart City Platform</span>
+                <span class="session-meta">12 Dec · 10:00 - 10:18</span>
+              </div>
+              <button class="btn-view-report">View</button>
+            </div>
+            <div class="session-list-item">
+              <div class="session-list-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/></svg>
+              </div>
+              <div class="session-list-info">
+                <span class="session-name">AI Image Generator</span>
+                <span class="session-meta">10 Dec · 14:30 - 14:51</span>
+              </div>
+              <button class="btn-view-report">View</button>
+            </div>
+            <div class="session-list-item">
+              <div class="session-list-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/></svg>
+              </div>
+              <div class="session-list-info">
+                <span class="session-name">Student Management System</span>
+                <span class="session-meta">5 Dec · 09:00 - 09:22</span>
+              </div>
+              <button class="btn-view-report">View</button>
+            </div>
+            <div class="session-list-item">
+              <div class="session-list-icon">
+                <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/></svg>
+              </div>
+              <div class="session-list-info">
+                <span class="session-name">E-commerce Website</span>
+                <span class="session-meta">28 Aug · 11:15 - 11:38</span>
+              </div>
+              <button class="btn-view-report">View</button>
+            </div>
+          </div>
+
+          <!-- Performance Report Card (shown inline) -->
+          <div class="perf-report-card" id="perfReportCard">
+            <div class="perf-report-header">
+              <h3>Viva Performance Report</h3>
+              <p>Here's your detailed performance analysis for CivicPulse.</p>
+              <button class="btn-download-report">↓ Download Report</button>
+            </div>
+            <div class="perf-stats-row">
+              <div class="perf-score-circle">
+                <svg viewBox="0 0 80 80" width="120" height="120">
+                  <circle cx="40" cy="40" r="34" fill="none" stroke="#2d2b4e" stroke-width="8"/>
+                  <circle cx="40" cy="40" r="34" fill="none" stroke="#6c63ff" stroke-width="8" stroke-dasharray="152 61" stroke-dashoffset="38" stroke-linecap="round"/>
+                  <text x="40" y="38" text-anchor="middle" fill="white" font-size="18" font-weight="700" font-family="Inter,sans-serif">78</text>
+                  <text x="40" y="52" text-anchor="middle" fill="#9ca3af" font-size="8" font-family="Inter,sans-serif">/100</text>
                 </svg>
-                <p>Upload your project documents (PDF, DOCX, PPTX, TXT) and source code (ZIP) to extract architecture, detected tech, and viva topics.</p>
+                <div class="perf-score-label">Overall Performance</div>
+              </div>
+              <div class="perf-stat-item">
+                <div class="perf-stat-label">Duration</div>
+                <div class="perf-stat-value">18 min 32 sec</div>
+              </div>
+              <div class="perf-stat-item">
+                <div class="perf-stat-label">Total Questions</div>
+                <div class="perf-stat-value">10</div>
+              </div>
+              <div class="perf-stat-item">
+                <div class="perf-stat-label">Correct Answers</div>
+                <div class="perf-stat-value">7</div>
+              </div>
+              <div class="perf-stat-item">
+                <div class="perf-stat-label">Follow-up Questions</div>
+                <div class="perf-stat-value">3</div>
+              </div>
+            </div>
+
+            <div class="perf-feedback-grid">
+              <div class="feedback-col strengths">
+                <div class="feedback-label">✓ Strengths</div>
+                <ul>
+                  <li>JWT &amp; Authentication</li>
+                  <li>UI Design &amp; Endpoints</li>
+                  <li>Project Architecture</li>
+                  <li>Problem Solving approach</li>
+                </ul>
+              </div>
+              <div class="feedback-col weaknesses">
+                <div class="feedback-label">✕ Weaknesses</div>
+                <ul>
+                  <li>Database Optimisation</li>
+                  <li>Security Best Practices</li>
+                  <li>System Design Concepts</li>
+                </ul>
+              </div>
+              <div class="feedback-col knowledge-gaps">
+                <div class="feedback-label">△ Knowledge Gaps</div>
+                <ul>
+                  <li>Scalability &amp; Load balancing</li>
+                  <li>Real-time features (WebSocket)</li>
+                </ul>
+              </div>
+              <div class="feedback-col improve">
+                <div class="feedback-label">→ Areas to Improve</div>
+                <ul>
+                  <li>More examples and practical depth</li>
+                  <li>Describe system design clearly</li>
+                  <li>Practice system design questions</li>
+                </ul>
               </div>
             </div>
           </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- Phase 2: AI Connection & Project Analysis Test Area -->
-    <section class="section project-analysis-section" id="project-analysis">
-      <div class="container">
-        <div class="section-header">
-          <span class="section-tag">Phase 2 AI Integration</span>
-          <h2 class="section-title">AI Connection & Project Analysis Test</h2>
-          <p class="section-subtitle">
-            Validate live OpenRouter inference and generate structured academic viva analysis from project specifications.
-          </p>
-        </div>
+          <!-- System Status (Phase 1 verification) -->
+          <div class="status-card" style="margin-top:2rem;">
+            <div class="status-card-header">
+              <div>
+                <span class="section-tag">Phase 1 Verification</span>
+                <h3 class="status-card-title">Live System Status &amp; Connectivity</h3>
+              </div>
+              <button class="btn btn-secondary btn-sm" id="btnRefreshStatus">
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="23 4 23 10 17 10"/><path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"/></svg>
+                <span>Refresh Status</span>
+              </button>
+            </div>
+            <div class="status-grid">
+              <div class="status-box">
+                <span class="status-box-title">Backend API</span>
+                <div class="status-box-value" id="statusApi">Checking...</div>
+                <span class="status-box-sub" id="statusApiUrl">Endpoint: /api/health</span>
+              </div>
+              <div class="status-box">
+                <span class="status-box-title">SQLite Database</span>
+                <div class="status-box-value" id="statusDb">Checking...</div>
+                <span class="status-box-sub" id="statusDbMeta">Engine: sqlite3 (WAL)</span>
+              </div>
+              <div class="status-box">
+                <span class="status-box-title">OpenRouter Interface</span>
+                <div class="status-box-value status-ready">Configured (Standby)</div>
+                <span class="status-box-sub">Ready for Phase 2</span>
+              </div>
+              <div class="status-box">
+                <span class="status-box-title">Frontend Client</span>
+                <div class="status-box-value status-ready">Active &amp; Responsive</div>
+                <span class="status-box-sub">Vanilla JS / Modern CSS</span>
+              </div>
+            </div>
+            <div class="status-log-panel">
+              <div class="log-panel-header">
+                <span>Diagnostic Console</span>
+                <span class="log-timestamp" id="logTimestamp">--</span>
+              </div>
+              <pre class="log-panel-content" id="logConsole">Connecting to AI Viva Examiner backend...</pre>
+            </div>
+          </div>
 
-        <div class="analysis-test-container">
-          <!-- Quick AI Ping Test Card -->
-          <div class="ai-quick-test-card">
+          <!-- AI Test -->
+          <div class="ai-quick-test-card" style="margin-top:2rem;">
             <div class="test-card-header">
               <div>
-                <h4 class="test-card-title">1. OpenRouter Quick Connection Test</h4>
-                <p class="test-card-desc">Sends a test prompt to <code>POST /api/ai/test</code> and verifies AI inference response.</p>
+                <h4 class="test-card-title">AI Connection Test</h4>
+                <p class="test-card-desc">Sends a test prompt to <code>POST /api/ai/test</code> and verifies AI inference.</p>
               </div>
               <button class="btn btn-secondary btn-sm" id="btnRunAiTest">
-                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                  <polygon points="5 3 19 12 5 21 5 3"></polygon>
-                </svg>
-                <span>Run AI Test</span>
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polygon points="5 3 19 12 5 21 5 3"/></svg>
+                Run AI Test
               </button>
             </div>
             <div class="quick-test-body">
-              <input type="text" id="aiTestPrompt" class="form-control" value="Explain what JavaScript is in one sentence." placeholder="Enter test prompt...">
+              <input type="text" id="aiTestPrompt" class="form-control" value="Explain what JavaScript is in one sentence.">
               <div class="quick-test-result" id="aiTestResult">Click "Run AI Test" to verify OpenRouter inference.</div>
             </div>
           </div>
 
-          <!-- Project Analysis Form & Results Grid -->
-          <div class="analysis-grid">
-            <!-- Form Card -->
+          <!-- Manual Project Analysis -->
+          <div class="analysis-grid" style="margin-top:2rem;">
             <div class="analysis-form-card">
               <div class="form-card-header">
                 <div>
-                  <h4 class="test-card-title">2. Project Information Input</h4>
-                  <p class="test-card-desc">Specify candidate project metadata for structured decomposition.</p>
+                  <h4 class="test-card-title">Manual Project Analysis</h4>
+                  <p class="test-card-desc">Specify project metadata for AI decomposition.</p>
                 </div>
                 <span class="badge badge-accent">POST /api/projects/analyze</span>
               </div>
               <form id="projectAnalysisForm">
                 <div class="form-group">
                   <label for="analysisProjectName">Project Name <span class="required">*</span></label>
-                  <input type="text" id="analysisProjectName" class="form-control" value="AI Viva Examiner" placeholder="e.g. AI Viva Examiner" required>
+                  <input type="text" id="analysisProjectName" class="form-control" value="AI Viva Examiner" required>
                 </div>
                 <div class="form-group">
                   <label for="analysisDescription">Short Description <span class="required">*</span></label>
-                  <textarea id="analysisDescription" class="form-control" rows="3" placeholder="Describe the project..." required>An AI system that conducts project-based viva examinations.</textarea>
+                  <textarea id="analysisDescription" class="form-control" rows="3" required>An AI system that conducts project-based viva examinations.</textarea>
                 </div>
                 <div class="form-group">
                   <label for="analysisTechnologies">Technologies (comma-separated)</label>
-                  <input type="text" id="analysisTechnologies" class="form-control" value="HTML, CSS, JavaScript, Node.js, SQLite" placeholder="e.g. React, Express, MongoDB">
+                  <input type="text" id="analysisTechnologies" class="form-control" value="HTML, CSS, JavaScript, Node.js, SQLite">
                 </div>
                 <div class="form-actions">
                   <button type="submit" class="btn btn-primary" id="btnAnalyzeProject">
                     <span id="analyzeBtnText">Analyze Project with AI</span>
-                    <span class="spinner" id="analyzeSpinner" style="display: none;"></span>
+                    <span class="spinner" id="analyzeSpinner" style="display:none;"></span>
                   </button>
                 </div>
               </form>
             </div>
-
-            <!-- Results Card -->
             <div class="analysis-results-card">
               <div class="results-card-header">
                 <div>
@@ -560,79 +678,60 @@
               </div>
               <div class="results-card-body" id="analysisResultsBody">
                 <div class="empty-state">
-                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5">
-                    <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path>
-                    <polyline points="14 2 14 8 20 8"></polyline>
-                    <line x1="16" y1="13" x2="8" y2="13"></line>
-                    <line x1="16" y1="17" x2="8" y2="17"></line>
-                    <polyline points="10 9 9 9 8 9"></polyline>
-                  </svg>
+                  <svg width="40" height="40" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
                   <p>Submit project information to generate structured academic evaluation, modules, and viva topics.</p>
                 </div>
               </div>
             </div>
           </div>
         </div>
-      </div>
-    </section>
+      </section>
 
-    <!-- Real-Time System Status & Verification (Phase 1 & 2 Testing Widget) -->
-    <section class="section system-status-section" id="system-status">
-      <div class="container">
-        <div class="status-card">
-          <div class="status-card-header">
-            <div>
-              <span class="section-tag">Phase 1 Verification</span>
-              <h3 class="status-card-title">Live System Status & Connectivity</h3>
+      <!-- ── PAGE: SETTINGS ── -->
+      <section class="app-page" id="page-settings">
+        <div class="page-inner">
+          <h2 class="page-title">Settings</h2>
+          <div class="settings-list">
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                Profile
+              </div>
+              <span class="settings-item-sub">Manage your personal details</span>
+              <svg class="settings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
-            <button class="btn btn-secondary btn-sm" id="btnRefreshStatus">
-              <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-                <polyline points="23 4 23 10 17 10"></polyline>
-                <path d="M20.49 15a9 9 0 1 1-2.12-9.36L23 10"></path>
-              </svg>
-              <span>Refresh Status</span>
-            </button>
-          </div>
-
-          <div class="status-grid">
-            <div class="status-box">
-              <span class="status-box-title">Backend API</span>
-              <div class="status-box-value" id="statusApi">Checking...</div>
-              <span class="status-box-sub" id="statusApiUrl">Endpoint: /api/health</span>
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                Notifications
+              </div>
+              <span class="settings-item-sub">Manage notifications</span>
+              <svg class="settings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
-
-            <div class="status-box">
-              <span class="status-box-title">SQLite Database</span>
-              <div class="status-box-value" id="statusDb">Checking...</div>
-              <span class="status-box-sub" id="statusDbMeta">Engine: sqlite3 (WAL)</span>
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33"/></svg>
+                AI Model
+              </div>
+              <span class="settings-item-sub">Select preferred AI model</span>
+              <svg class="settings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
-
-            <div class="status-box">
-              <span class="status-box-title">OpenRouter Interface</span>
-              <div class="status-box-value status-ready">Configured (Standby)</div>
-              <span class="status-box-sub">Ready for Phase 2 integration</span>
+            <div class="settings-item">
+              <div class="settings-item-label">
+                <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Help &amp; Support
+              </div>
+              <span class="settings-item-sub">Get help and contact us</span>
+              <svg class="settings-arrow" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><polyline points="9 18 15 12 9 6"/></svg>
             </div>
-
-            <div class="status-box">
-              <span class="status-box-title">Frontend Client</span>
-              <div class="status-box-value status-ready">Active & Responsive</div>
-              <span class="status-box-sub">Vanilla JS / Modern CSS</span>
-            </div>
-          </div>
-
-          <div class="status-log-panel">
-            <div class="log-panel-header">
-              <span>Diagnostic Console</span>
-              <span class="log-timestamp" id="logTimestamp">--</span>
-            </div>
-            <pre class="log-panel-content" id="logConsole">Connecting to AI Viva Examiner backend...</pre>
           </div>
         </div>
-      </div>
-    </section>
-  </main>
+      </section>
 
-  <!-- Start Viva Modal -->
+    </div><!-- end app-content -->
+  </div><!-- end app-shell -->
+
+  <!-- Start Viva Modal (for session setup) -->
   <div class="modal-overlay" id="vivaModal" aria-hidden="true">
     <div class="modal-dialog">
       <div class="modal-header">
@@ -642,127 +741,46 @@
         </div>
         <button class="modal-close" id="btnCloseModal" aria-label="Close dialog">&times;</button>
       </div>
-
       <div class="modal-body">
         <div class="phase-notice">
           <div class="notice-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <circle cx="12" cy="12" r="10"></circle>
-              <line x1="12" y1="16" x2="12" y2="12"></line>
-              <line x1="12" y1="8" x2="12.01" y2="8"></line>
-            </svg>
+            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="16" x2="12" y2="12"/><line x1="12" y1="8" x2="12.01" y2="8"/></svg>
           </div>
           <div>
             <strong>Phase 1 Foundation Operational</strong>
-            <p>The Express backend, SQLite persistence, and UI layout are verified. Interactive AI viva question generation and evaluation will activate in Phase 2.</p>
+            <p>The Express backend, SQLite persistence, and UI layout are verified. Interactive AI viva question generation activates in Phase 2.</p>
           </div>
         </div>
-
         <form class="viva-setup-form" onsubmit="event.preventDefault();">
           <div class="form-group">
             <label for="studentName">Candidate Name / Roll No.</label>
             <input type="text" id="studentName" class="form-control" placeholder="e.g. Alex Morgan (CS-2024-042)" value="Student Candidate">
           </div>
-
           <div class="form-group">
             <label for="subjectSelect">Examination Domain</label>
             <select id="subjectSelect" class="form-control">
-              <option value="os">Operating Systems & Concurrency</option>
-              <option value="ds">Data Structures & Algorithm Complexity</option>
-              <option value="db">Database Management & ACID Guarantees</option>
-              <option value="cn">Computer Networks & Security Protocols</option>
-              <option value="custom">Custom Syllabus (Phase 2)</option>
+              <option value="os">Operating Systems &amp; Concurrency</option>
+              <option value="ds">Data Structures &amp; Algorithm Complexity</option>
+              <option value="db">Database Management &amp; ACID Guarantees</option>
+              <option value="cn">Computer Networks &amp; Security Protocols</option>
             </select>
           </div>
-
           <div class="form-group">
             <label for="rigorLevel">Academic Rigor Level</label>
             <select id="rigorLevel" class="form-control">
-              <option value="undergraduate">Undergraduate Standard (Concept & Application)</option>
-              <option value="honors">Honors / Graduate (Critical Analysis & Edge Cases)</option>
-              <option value="research">Comprehensive Doctoral Defense Standard</option>
+              <option value="undergraduate">Undergraduate Standard</option>
+              <option value="honors">Honors / Graduate</option>
+              <option value="research">Doctoral Defense Standard</option>
             </select>
-          </div>
-
-          <div class="form-group">
-            <label>Examination Mode</label>
-            <div class="mode-chips">
-              <span class="chip chip-active">Text-based Oral Dialogue</span>
-              <span class="chip">Voice Transcription (Phase 2)</span>
-            </div>
           </div>
         </form>
       </div>
-
       <div class="modal-footer">
         <button class="btn btn-secondary" id="btnCancelModal">Close</button>
-        <button class="btn btn-primary" id="btnConfirmViva">Proceed to Phase 2 Workspace</button>
+        <button class="btn btn-primary" id="btnConfirmViva">Start Session</button>
       </div>
     </div>
   </div>
-
-  <!-- Professional Footer -->
-  <footer class="site-footer">
-    <div class="container footer-container">
-      <div class="footer-col brand-col">
-        <div class="logo">
-          <div class="logo-icon">
-            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-              <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
-              <path d="M6 12v5c3 3 9 3 12 0v-5"/>
-            </svg>
-          </div>
-          <span class="logo-title">AI Viva Examiner</span>
-        </div>
-        <p class="footer-desc">
-          An automated, rubric-driven oral examination platform providing real-time technical evaluation, adaptive probing, and diagnostic knowledge-gap detection.
-        </p>
-        <div class="footer-meta">
-          <span>Architecture: Express / SQLite / OpenRouter</span>
-        </div>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-heading">Platform</h4>
-        <ul class="footer-links">
-          <li><a href="#overview">Overview</a></li>
-          <li><a href="#how-it-works">Examination Workflow</a></li>
-          <li><a href="#capabilities">Evaluation Capabilities</a></li>
-          <li><a href="#system-status">System Status</a></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-heading">Specifications</h4>
-        <ul class="footer-links">
-          <li><span>Runtime: Node.js 24+</span></li>
-          <li><span>Framework: Express 5</span></li>
-          <li><span>Storage: SQLite 3 (WAL)</span></li>
-          <li><span>API: RESTful / JSON</span></li>
-        </ul>
-      </div>
-
-      <div class="footer-col">
-        <h4 class="footer-heading">Hackathon Status</h4>
-        <p class="footer-status-text">
-          Phase 1 Foundation and Initial Frontend complete. Core API and database verified. Ready for Phase 2 question generation and viva engine.
-        </p>
-      </div>
-    </div>
-
-    <div class="footer-bottom">
-      <div class="container footer-bottom-container">
-        <p>&copy; 2026 AI Viva Examiner. Designed for academic rigor and objective evaluation.</p>
-        <div class="footer-bottom-links">
-          <span>Strict Rubrics</span>
-          <span class="sep">&bull;</span>
-          <span>Zero Hallucination Tolerance</span>
-          <span class="sep">&bull;</span>
-          <span>OpenRouter Ready</span>
-        </div>
-      </div>
-    </div>
-  </footer>
 
   <script src="js/app.js"></script>
 </body>

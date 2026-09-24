@@ -3,13 +3,207 @@
  */
 
 document.addEventListener('DOMContentLoaded', () => {
+
+  // ========================================================================
+  // NEW UI: Page Navigation & Landing
+  // ========================================================================
+
+  const pageLanding   = document.getElementById('pageLanding');
+  const appShell      = document.getElementById('appShell');
+  const btnGetStarted = document.getElementById('btnGetStarted');
+  const btnLogin      = document.getElementById('btnLogin');
+  const sidebarToggle = document.getElementById('sidebarToggle');
+
+  if (sidebarToggle && appShell) {
+    sidebarToggle.addEventListener('click', () => {
+      appShell.classList.toggle('sidebar-collapsed');
+    });
+  }
+
+  const revealTargets = document.querySelectorAll('.quick-action-card, .project-list-item, .session-list-item, .upload-panel-card, .upload-results-card, .viva-summary-card, .viva-features-card, .perf-report-card, .feedback-col, .status-box, .settings-item');
+  if (revealTargets.length && 'IntersectionObserver' in window) {
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('is-visible');
+          revealObserver.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.2, rootMargin: '0px 0px -40px 0px' });
+
+    revealTargets.forEach((element, index) => {
+      element.style.animationDelay = `${Math.min(index * 0.06, 0.32)}s`;
+      revealObserver.observe(element);
+    });
+  } else {
+    revealTargets.forEach((element) => element.classList.add('is-visible'));
+  }
+
+  /** Switch from landing to app shell */
+  function enterApp() {
+    if (pageLanding) pageLanding.style.display = 'none';
+    if (appShell)    appShell.style.display = 'flex';
+    navigateTo('dashboard');
+    checkBackendHealth();
+  }
+
+  if (btnGetStarted) btnGetStarted.addEventListener('click', enterApp);
+  if (btnLogin)      btnLogin.addEventListener('click',      enterApp);
+
+  /** Navigate to a named page within the app shell */
+  function navigateTo(pageId) {
+    document.querySelectorAll('.nav-link').forEach(link => {
+      link.classList.toggle('active', link.dataset.page === pageId);
+    });
+    document.querySelectorAll('.app-page').forEach(page => {
+      page.classList.toggle('active', page.id === `page-${pageId}`);
+    });
+    const topbarTitle = document.getElementById('topbarTitle');
+    const titleMap = { dashboard: 'Dashboard', projects: 'My Projects', viva: 'Viva Sessions', reports: 'Reports', settings: 'Settings' };
+    if (topbarTitle) topbarTitle.textContent = titleMap[pageId] || pageId;
+  }
+
+  // Sidebar nav links
+  document.querySelectorAll('.nav-link[data-page]').forEach(link => {
+    link.addEventListener('click', () => navigateTo(link.dataset.page));
+  });
+
+  // Back / view-all links
+  document.querySelectorAll('.back-link[data-page], .view-all-link[data-page]').forEach(el => {
+    el.addEventListener('click', (e) => { e.preventDefault(); navigateTo(el.dataset.page); });
+  });
+
+  // Dashboard quick-action cards
+  const qaUpload    = document.getElementById('qaUpload');
+  const qaReports   = document.getElementById('qaReports');
+  const qaStartViva = document.getElementById('qaStartViva');
+  if (qaUpload)    qaUpload.addEventListener('click',    () => navigateTo('projects'));
+  if (qaReports)   qaReports.addEventListener('click',   () => navigateTo('reports'));
+  if (qaStartViva) qaStartViva.addEventListener('click', () => navigateTo('viva'));
+
+  // Viva tabs toggle
+  document.querySelectorAll('.viva-tab').forEach(tab => {
+    tab.addEventListener('click', () => {
+      document.querySelectorAll('.viva-tab').forEach(t => t.classList.remove('active'));
+      tab.classList.add('active');
+    });
+  });
+
+  // Generate Viva → reveal session wrapper
+  const btnGenerateViva    = document.getElementById('btnGenerateViva');
+  const vivaSessionWrapper = document.getElementById('vivaSessionWrapper');
+  if (btnGenerateViva && vivaSessionWrapper) {
+    btnGenerateViva.addEventListener('click', () => {
+      vivaSessionWrapper.style.display = 'block';
+      vivaSessionWrapper.scrollIntoView({ behavior: 'smooth' });
+      startVivaTimer();
+    });
+  }
+
+  // End Session
+  const btnEndSession = document.getElementById('btnEndSession');
+  if (btnEndSession && vivaSessionWrapper) {
+    btnEndSession.addEventListener('click', () => { vivaSessionWrapper.style.display = 'none'; });
+  }
+
+  // Viva chat submit
+  const btnSubmitAnswer = document.getElementById('btnSubmitAnswer');
+  const vivaAnswerInput = document.getElementById('vivaAnswerInput');
+  const vivaChatWindow  = document.getElementById('vivaChatWindow');
+  const qpItems         = document.querySelectorAll('.qp-item');
+  let questionIndex = 0;
+  const sampleFollowUps = [
+    'Follow-up: How do you handle JWT token expiry and refresh tokens in your project?',
+    'Follow-up: Can you explain how you designed the database schema for this feature?',
+    'Follow-up: How did you ensure scalability in your system architecture?',
+    'Follow-up: What security vulnerabilities did you consider during development?',
+    'Follow-up: How would you improve this feature given more time?',
+  ];
+
+  if (btnSubmitAnswer && vivaAnswerInput && vivaChatWindow) {
+    function submitVivaAnswer() {
+      const answer = vivaAnswerInput.value.trim();
+      if (!answer) return;
+      const userMsg = document.createElement('div');
+      userMsg.className = 'chat-msg';
+      userMsg.innerHTML = `<div class="chat-avatar user-avatar-chat">ST</div><div class="chat-bubble"><p>${escapeHtml(answer)}</p></div>`;
+      vivaChatWindow.appendChild(userMsg);
+      vivaAnswerInput.value = '';
+      vivaChatWindow.scrollTop = vivaChatWindow.scrollHeight;
+      if (qpItems[questionIndex]) { qpItems[questionIndex].classList.remove('active'); qpItems[questionIndex].classList.add('done'); }
+      questionIndex = Math.min(questionIndex + 1, qpItems.length - 1);
+      if (qpItems[questionIndex]) qpItems[questionIndex].classList.add('active');
+      setTimeout(() => {
+        const aiMsg = document.createElement('div');
+        aiMsg.className = 'chat-msg examiner-msg';
+        aiMsg.innerHTML = `<div class="chat-avatar ai-avatar">AI</div><div class="chat-bubble"><p><strong>${sampleFollowUps[questionIndex % sampleFollowUps.length]}</strong></p></div>`;
+        vivaChatWindow.appendChild(aiMsg);
+        vivaChatWindow.scrollTop = vivaChatWindow.scrollHeight;
+      }, 700);
+    }
+    btnSubmitAnswer.addEventListener('click', submitVivaAnswer);
+    vivaAnswerInput.addEventListener('keydown', (e) => { if (e.key === 'Enter' && !e.shiftKey) { e.preventDefault(); submitVivaAnswer(); } });
+  }
+
+  qpItems.forEach((item, idx) => {
+    item.addEventListener('click', () => {
+      qpItems.forEach(i => i.classList.remove('active'));
+      item.classList.add('active');
+      questionIndex = idx;
+    });
+  });
+
+  // Viva timer
+  const vivaTimer = document.getElementById('vivaTimer');
+  let timerSeconds = 165;
+  let timerInterval = null;
+  function startVivaTimer() {
+    if (timerInterval) clearInterval(timerInterval);
+    timerInterval = setInterval(() => {
+      if (timerSeconds > 0) {
+        timerSeconds--;
+        const m = Math.floor(timerSeconds / 60).toString().padStart(2, '0');
+        const s = (timerSeconds % 60).toString().padStart(2, '0');
+        if (vivaTimer) vivaTimer.textContent = `${m}:${s}`;
+      } else {
+        clearInterval(timerInterval);
+        if (vivaTimer) vivaTimer.textContent = '00:00';
+      }
+    }, 1000);
+  }
+
+  // View report button scrolls to perf card
+  document.querySelectorAll('.btn-view-report').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const card = document.getElementById('perfReportCard');
+      if (card) card.scrollIntoView({ behavior: 'smooth' });
+    });
+  });
+
+  // Main drop zone for upload page
+  const mainDropZone = document.getElementById('mainDropZone');
+  if (mainDropZone) {
+    mainDropZone.addEventListener('dragover',  (e) => { e.preventDefault(); mainDropZone.style.borderColor = 'var(--accent)'; });
+    mainDropZone.addEventListener('dragleave', ()  => { mainDropZone.style.borderColor = ''; });
+    mainDropZone.addEventListener('drop',      (e) => { e.preventDefault(); mainDropZone.style.borderColor = ''; if (e.dataTransfer?.files) addFilesToQueue(e.dataTransfer.files); });
+  }
+
+  function updateSelectedFilesSection() {
+    const section = document.getElementById('selectedFilesSection');
+    if (section) section.style.display = selectedFilesQueue.length > 0 ? 'block' : 'none';
+  }
+
+  // ========================================================================
+  // END NEW UI NAVIGATION — Original logic continues below
+  // ========================================================================
+
   // DOM Elements - Status & Monitor
-  const navStatusDot = document.querySelector('.status-dot');
+  const navStatusDot   = document.getElementById('navStatusDot') || document.querySelector('.status-dot');
   const navStatusLabel = document.getElementById('navStatusLabel');
-  const statusApi = document.getElementById('statusApi');
-  const statusDb = document.getElementById('statusDb');
-  const logConsole = document.getElementById('logConsole');
-  const logTimestamp = document.getElementById('logTimestamp');
+  const statusApi      = document.getElementById('statusApi');
+  const statusDb       = document.getElementById('statusDb');
+  const logConsole     = document.getElementById('logConsole');
+  const logTimestamp   = document.getElementById('logTimestamp');
   const btnRefreshStatus = document.getElementById('btnRefreshStatus');
 
   // DOM Elements - Phase 3 Project Upload
@@ -17,23 +211,23 @@ document.addEventListener('DOMContentLoaded', () => {
   const uploadProjectName = document.getElementById('uploadProjectName');
   const uploadProjectDesc = document.getElementById('uploadProjectDesc');
   const uploadProjectTech = document.getElementById('uploadProjectTech');
-  const docFileInput = document.getElementById('docFileInput');
-  const codeFileInput = document.getElementById('codeFileInput');
-  const docDropZone = document.getElementById('docDropZone');
-  const codeDropZone = document.getElementById('codeDropZone');
+  const docFileInput      = document.getElementById('docFileInput');
+  const codeFileInput     = document.getElementById('codeFileInput');
+  const docDropZone       = document.getElementById('docDropZone');
+  const codeDropZone      = document.getElementById('codeDropZone');
   const selectedFilesList = document.getElementById('selectedFilesList');
   const selectedFilesCount = document.getElementById('selectedFilesCount');
-  const btnClearFiles = document.getElementById('btnClearFiles');
-  const btnSubmitUpload = document.getElementById('btnSubmitUpload');
-  const uploadBtnText = document.getElementById('uploadBtnText');
-  const uploadSpinner = document.getElementById('uploadSpinner');
-  const uploadStepper = document.getElementById('uploadStepper');
-  const stepUpload = document.getElementById('stepUpload');
-  const stepExtract = document.getElementById('stepExtract');
-  const stepAnalyze = document.getElementById('stepAnalyze');
-  const stepComplete = document.getElementById('stepComplete');
+  const btnClearFiles     = document.getElementById('btnClearFiles');
+  const btnSubmitUpload   = document.getElementById('btnSubmitUpload');
+  const uploadBtnText     = document.getElementById('uploadBtnText');
+  const uploadSpinner     = document.getElementById('uploadSpinner');
+  const uploadStepper     = document.getElementById('uploadStepper');
+  const stepUpload        = document.getElementById('stepUpload');
+  const stepExtract       = document.getElementById('stepExtract');
+  const stepAnalyze       = document.getElementById('stepAnalyze');
+  const stepComplete      = document.getElementById('stepComplete');
   const uploadStatusBadge = document.getElementById('uploadStatusBadge');
-  const uploadResultMeta = document.getElementById('uploadResultMeta');
+  const uploadResultMeta  = document.getElementById('uploadResultMeta');
   const uploadResultsBody = document.getElementById('uploadResultsBody');
 
   // DOM Elements - Phase 2 AI Quick Test
@@ -46,19 +240,19 @@ document.addEventListener('DOMContentLoaded', () => {
   const analysisProjectName = document.getElementById('analysisProjectName');
   const analysisDescription = document.getElementById('analysisDescription');
   const analysisTechnologies = document.getElementById('analysisTechnologies');
-  const btnAnalyzeProject = document.getElementById('btnAnalyzeProject');
-  const analyzeBtnText = document.getElementById('analyzeBtnText');
-  const analyzeSpinner = document.getElementById('analyzeSpinner');
+  const btnAnalyzeProject   = document.getElementById('btnAnalyzeProject');
+  const analyzeBtnText      = document.getElementById('analyzeBtnText');
+  const analyzeSpinner      = document.getElementById('analyzeSpinner');
   const analysisStatusBadge = document.getElementById('analysisStatusBadge');
   const analysisResultsBody = document.getElementById('analysisResultsBody');
 
   // Modal Elements
-  const vivaModal = document.getElementById('vivaModal');
+  const vivaModal        = document.getElementById('vivaModal');
   const btnStartVivaHeader = document.getElementById('btnStartVivaHeader');
-  const btnStartVivaMain = document.getElementById('btnStartVivaMain');
-  const btnCloseModal = document.getElementById('btnCloseModal');
-  const btnCancelModal = document.getElementById('btnCancelModal');
-  const btnConfirmViva = document.getElementById('btnConfirmViva');
+  const btnStartVivaMain   = document.getElementById('btnStartVivaMain');
+  const btnCloseModal    = document.getElementById('btnCloseModal');
+  const btnCancelModal   = document.getElementById('btnCancelModal');
+  const btnConfirmViva   = document.getElementById('btnConfirmViva');
 
   // Upload State
   let selectedFilesQueue = [];
@@ -209,6 +403,8 @@ document.addEventListener('DOMContentLoaded', () => {
     if (!selectedFilesList || !selectedFilesCount) return;
 
     selectedFilesCount.textContent = selectedFilesQueue.length;
+    // Show/hide the new collapsible files panel
+    updateSelectedFilesSection();
 
     if (selectedFilesQueue.length === 0) {
       selectedFilesList.innerHTML = `<div class="no-files-notice">No files selected yet. Choose documentation or a source code ZIP above.</div>`;

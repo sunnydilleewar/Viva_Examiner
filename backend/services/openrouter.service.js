@@ -10,7 +10,7 @@
  */
 
 const OPENROUTER_API_URL = 'https://openrouter.ai/api/v1/chat/completions';
-const DEFAULT_MODEL = 'thinkingmachines/inkling:free';
+const DEFAULT_MODEL = 'thinkingmachines/inkling-small:free';
 const DEFAULT_TIMEOUT_MS = 45000;
 
 function getApiKey() {
